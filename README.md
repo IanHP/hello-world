@@ -7,3 +7,5 @@ Working hard or hardly working
 Working Hard
 
 
+# Terms of Service
+none
