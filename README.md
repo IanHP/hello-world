@@ -5,7 +5,3 @@ Working hard or hardly working
 
 # Hardly Working
 Working Hard
-
-
-# Terms of Service
-none
