@@ -1,0 +1,11 @@
+game = 1
+time = 300
+size = 0.01
+time-to-win = 1239
+version = 1.01
+time = 3.91
+values = [1.91,ian,1]
+oops
+= 1012
+five = five
+game = 2
