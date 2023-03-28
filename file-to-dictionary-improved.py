@@ -7,6 +7,8 @@ Steps:
 5. Tern value into correct form
 - if the value is an, or object, then run 2+ on it
 - if the value is a list (or similar), run it in a way, so the syntax of everything inside is also saved (modified 2+)
+
+
 """
 
 def setVars(wordList):
