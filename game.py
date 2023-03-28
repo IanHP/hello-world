@@ -9,13 +9,21 @@ def setVars(wordList):
 
     variables = {}
 
-    for line in wordList:
+    for index,line in enumerate(wordList):
         '''
         runs as each list in the list of lists
         '''
 
         #checks if list is formatted properly. If yes returns the key and value.
-        check,key,value = checkLineForKeyValue(line)
+        check,key,value = checkLineForKeyValue(index,line)
+
+        #checks if key is already in use
+        keyList = variables.keys()
+
+        if key in keyList:
+            check = False
+            print(f'Duplicate key on line {index}')
+
 
         if check:
             #then turns value into correct form.
@@ -23,20 +31,20 @@ def setVars(wordList):
 
             #adds key:value to dictionary
             variables[key] = value
-        else:
-            print('Improperly formatted key:value pair')
-    
+
+
     return variables
 
-def checkLineForKeyValue(line):
+def checkLineForKeyValue(index,line):
     '''
-    checks if the line has the correct length. Then returns edited list.
+    checks if the line has the correct syntax. Then returns edited list.
     '''
 
     length = len(line) 
     if length >= 2 and line[1] == '=':
         return True,line[0],line[2]
     else:
+        print(f'Improperly formatted key:value pair on line {index}')
         return False,"error","error"
     
 
@@ -98,9 +106,11 @@ if __name__  == "__main__":
     
     '''
     #gets user input for file name
+    print('What is the file named? If it is not in the same folder, please include the necessary directory info. \nenter here: ')
+    fileLocation = input()
 
     #sets the file to variable
-    file = open('test.txt',mode='r')
+    file = open(fileLocation,mode='r')
     text = file.read()
     file.close()
 
