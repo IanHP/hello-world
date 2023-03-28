@@ -9,7 +9,7 @@ def setVars(wordList):
 
     variables = {}
 
-    for index,line in enumerate(wordList):
+    for index,line in enumerate(wordList, 1):
         '''
         runs as each list in the list of lists
         '''
@@ -22,9 +22,9 @@ def setVars(wordList):
 
         if key in keyList:
             check = False
-            print(f'Duplicate key on line {index}')
+            print(f'Duplicate key on line {index} (key: {key} || value: {value})')
 
-
+        #if previous checks are successful then add key, and edited value to dictionary
         if check:
             #then turns value into correct form.
             value = stringToValue(value)
@@ -44,7 +44,7 @@ def checkLineForKeyValue(index,line):
     if length >= 2 and line[1] == '=':
         return True,line[0],line[2]
     else:
-        print(f'Improperly formatted key:value pair on line {index}')
+        print(f'Improperly formatted key:value pair on line {index} ({line})')
         return False,"error","error"
     
 
@@ -94,8 +94,7 @@ def listify(word):
         newList.append(stringToValue(part))
     return newList
 
-
-if __name__  == "__main__":
+def textDocToDictionary(fileLocation = 'N/A'):
     '''
     if run it will turn the inputted file into a dictionary of key:values.
     Supported Values:
@@ -105,11 +104,13 @@ if __name__  == "__main__":
      - All othres will become strings
     
     '''
-    #gets user input for file name
-    print('What is the file named? If it is not in the same folder, please include the necessary directory info. \nenter here: ')
-    fileLocation = input()
 
-    #sets the file to variable
+    #gets user input for file name
+    if fileLocation == 'N/A':
+        print('What is the file named? If it is not in the same folder, please include the necessary directory info. \nenter here: ')
+        fileLocation = input()
+
+    #sets the file to a variable
     file = open(fileLocation,mode='r')
     text = file.read()
     file.close()
@@ -126,6 +127,10 @@ if __name__  == "__main__":
     values = setVars(wordList)
     print(values)
 
+
+
+if __name__  == "__main__":
+    textDocToDictionary('test.txt')
 
 
 
